@@ -1,0 +1,372 @@
+*** Variables ***
+#Project of Building
+${HOME_VIEW_LBL_PROJECTOFBUILDING_TH}    โครงการ 
+${HOME_VIEW_LBL_PROJECTOFBUILDING_EN}    Project of Building
+${HOME_VIEW_LBL_PROJECTOFBUILDING_LOCATOR}    id=lblProjectOfBuildingTitle
+#Project of Building
+${HOME_VIEW_LBL_PROJECTOFBUILDINGDATA_TH}    โครงการ FonTest 
+${HOME_VIEW_LBL_PROJECTOFBUILDINGDATA_EN}    Project of Building FonTest
+${HOME_VIEW_LBL_PROJECTOFBUILDINGDATA_LOCATOR}    id=lblProjectName1720
+${HOME_VIEW_BTN_EDITPROJECTOFBUILDINGDATA_LOCATOR}    id=btnEditPropertyData1720
+
+
+#ID Building
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_IDBUILDING_TH}    ID อาคาร : 3348
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_IDBUILDING_EN}    ID Building : 3348
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_IDBUILDING_LOCATOR}    id=lblIDBuilding3348
+#Building
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_BUILDING_TH}    อาคาร
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_BUILDING_EN}    Building
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_BUILDING_LOCATOR}    id=lblBuilding3348
+${HOME_VIEW_LNK_TABSMARTRMSPACKAGE_BUILDING_LOCATOR}    id=lnkBuilding3348
+#Package Format documents
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_DAILYROOMRESERVATION_TH}    จองรายวัน
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_DAILYROOMRESERVATION_EN}    Daily room reservation
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_DAILYROOMRESERVATION_LOCATOR}    id=btnDailyRoomReservation3348
+#Monthly room reservation
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_MONTHLYROOMRESERVATION_TH}    จองรายเดือน
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_MONTHLYROOMRESERVATION_EN}    Monthly room reservation
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_MONTHLYROOMRESERVATION_LOCATOR}    id=btnMonthlyRoomReservation3348
+#Manage rent
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_MANAGERENT_TH}    จัดการค่าเช่า
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_MANAGERENT_EN}    Manage rent
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_MANAGERENT_LOCATOR}    id=btnManageRent3348
+#Overview
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_OVERVIEW_TH}    ภาพรวม
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_OVERVIEW_EN}    Overview
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_OVERVIEW_LOCATOR}    id=btnOverview3348
+#Add building
+${HOME_VIEW_BTN_TABSMARTRMSPACKAGE_ADDBUILDING_TH}    เพิ่มอาคาร
+${HOME_VIEW_BTN_TABSMARTRMSPACKAGE_ADDBUILDING_EN}    Add building
+${HOME_VIEW_BTN_TABSMARTRMSPACKAGE_ADDBUILDING_LOCATOR}    id=btnAddBuilding1720
+#Tasks
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_TASKS_TH}    Tasks
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_TASKS_EN}    Tasks
+${HOME_VIEW_LBL_TABSMARTRMSPACKAGE_TASKS_LOCATOR}    id=lblTasks
+
+#Task
+${HOME_VIEW_DDL_TASKS_LOCATOR}    xpath=//*[@id="ddlTasksType"]/div[1]/div/div[1]/input
+${HOME_VIEW_DDL_TASKS_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${HOME_VIEW_DDL_TASKS_CLASS_LOCATOR}    class=dx-list-item-content
+@{HOME_VIEW_DDL_TASKS_TH_VALUE}    แสดงทุกรายการ    นัดเซ็นสัญญา    ย้ายเข้า    ย้ายออก    เช็คอิน    เช็คเอาท์    ทำความสะอาด    ซ่อมแซม    บริการอื่น ๆ
+@{HOME_VIEW_DDL_TASKS_EN_VALUE}    Show all    Signing a contract    Move in    Move out    Check in    Check out    Cleaning    Repair    Other service
+
+############## Add building ############## 
+#Add building
+${HOME_ADD_LBL_ADDBUILDINGHD_TH}    เพิ่มอาคาร
+${HOME_ADD_LBL_ADDBUILDINGHD_EN}    Add building
+${HOME_ADD_LBL_ADDBUILDINGHD_LOCATOR}    id=lblAddBuilding
+
+#Property
+${HOME_ADD_LBL_PROPERTY_TH}    โครงการ FonTest
+${HOME_ADD_LBL_PROPERTY_EN}    Property FonTest
+${HOME_ADD_LBL_PROPERTY_LOCATOR}    id=lblAddBuildingPropertyName
+
+#Building name
+${HOME_ADD_LBL_BUILDINGNAME_TH}    ชื่ออาคาร *
+${HOME_ADD_LBL_BUILDINGNAME_EN}    Building name *
+${HOME_ADD_LBL_BUILDINGNAME_PLACEHOLDER_TH}    ชื่ออาคาร
+${HOME_ADD_LBL_BUILDINGNAME_PLACEHOLDER_EN}    Building name
+${HOME_ADD_LBL_BUILDINGNAME_LOCATOR}    id=lblAddBuildingBuildingName
+${HOME_ADD_TXT_BUILDINGNAME_LOCATOR}    id=txtAddBuildingBuildingName
+#Number of floors 
+${HOME_ADD_LBL_NUMBEROFFLOORS_TH}    จำนวนชั้น *
+${HOME_ADD_LBL_NUMBEROFFLOORS_EN}    Number of floors *
+${HOME_ADD_LBL_NUMBEROFFLOORS_PLACEHOLDER_TH}    จำนวนชั้น 
+${HOME_ADD_LBL_NUMBEROFFLOORS_PLACEHOLDER_EN}    Number of floors
+${HOME_ADD_LBL_NUMBEROFFLOORS_LOCATOR}    id=lblAddBuildingNumberFloors
+${HOME_ADD_TXT_NUMBEROFFLOORS_LOCATOR}    id=txtAddBuildingNumberFloors
+#Total rooms
+${HOME_ADD_LBL_TOTALROOMS_TH}    จำนวนห้องทั้งหมด*
+${HOME_ADD_LBL_TOTALROOMS_EN}    Total rooms*
+${HOME_ADD_LBL_TOTALROOMS_PLACEHOLDER_TH}    จำนวนห้อง
+${HOME_ADD_LBL_TOTALROOMS_PLACEHOLDER_EN}    Total rooms
+${HOME_ADD_LBL_TOTALROOMS_LOCATOR}    id=lblAddBuildingTotalRooms
+${HOME_ADD_TXT_TOTALROOMS_LOCATOR}    id=txtAddBuildingTotalRooms
+#Rent payment type
+${HOME_ADD_LBL_RENTPAYMENTTYPE_TH}    ประเภทการคิดค่าเช่า *
+${HOME_ADD_LBL_RENTPAYMENTTYPE_EN}    Rent payment type *
+${HOME_ADD_LBL_RENTPAYMENTTYPE_LOCATOR}    id=lblAddBuildingRentPaymentType
+${HOME_ADD_DDL_RENTPAYMENTTYPE_LOCATOR}    id=ddlAddBuildingRentPaymentType
+${HOME_ADD_DDL_RENTPAYMENTTYPE_LIST_LOCATOR}    xpath=//*[@id="ddlAddBuildingRentPaymentType"]/option[replace_indexList]
+${HOME_ADD_DDL_RENTPAYMENTTYPE_CLASS_LOCATOR}    xpath=//*[@id="ddlAddBuildingRentPaymentType"]/option
+@{HOME_ADD_DDL_RENTPAYMENTTYPE_TH_VALUE}    กรุณาเลือก (Select)    อยู่ก่อนเก็บ    เก็บก่อนอยู่
+@{HOME_ADD_DDL_RENTPAYMENTTYPE_EN_VALUE}    Please select    Stay for before pay    Pay before stay
+
+#Cancel
+${HOME_ADD_BTN_CANCEL_TH}    ยกเลิก
+${HOME_ADD_BTN_CANCEL_EN}    Cancel
+${HOME_ADD_BTN_CANCEL_LOCATOR}    id=btnAddBuildingCancel
+#Seve
+${HOME_ADD_BTN_SAVE_TH}    บันทึก
+${HOME_ADD_BTN_SAVE_EN}    Seve
+${HOME_ADD_BTN_SAVE_LOCATOR}    id=btnAddBuildingSave
+
+############## Edit building ############## 
+#Property information
+${HOME_EDIT_LBL_PROPERTYINFORMATION_TH}    ข้อมูลโครงการ
+${HOME_EDIT_LBL_PROPERTYINFORMATION_EN}    Property information
+${HOME_EDIT_LBL_PROPERTYINFORMATION_LOCATOR}    id=lblPropertyInformation
+
+#Property name
+${HOME_EDIT_LBL_PROPERTYNAME_TH}    ชื่อโครงการ *
+${HOME_EDIT_LBL_PROPERTYNAME_EN}    Property name *
+${HOME_EDIT_LBL_PROPERTYNAME_LOCATOR}    id=lblPropertyInfoPropertyName
+${HOME_EDIT_TXT_PROPERTYNAME_LOCATOR}    id=txtPropertyInfoPropertyName
+ 
+#Property type
+${HOME_EDIT_LBL_PROPERTYTYPE_TH}    ประเภทโครงการ
+${HOME_EDIT_LBL_PROPERTYTYPE_EN}    Property type
+${HOME_EDIT_LBL_PROPERTYTYPE_LOCATOR}    id=lblPropertyInfoPropertyType
+${HOME_EDIT_DDL_PROPERTYTYPE_LOCATOR}    id=ddlPropertyInfoPropertyType
+#Address
+${HOME_EDIT_LBL_PROPERTYADDRESS_TH}    ที่อยู่
+${HOME_EDIT_LBL_PROPERTYADDRESS_EN}    Address
+${HOME_EDIT_LBL_PROPERTYADDRESS_LOCATOR}    id=lblPropertyInfoAddress
+${HOME_EDIT_TXT_PROPERTYADDRESS_LOCATOR}    id=inputAddress
+#Phone number
+${HOME_EDIT_LBL_PROPERTYPHONENUMBER_TH}    เบอร์โทรศัพท์
+${HOME_EDIT_LBL_PROPERTYPHONENUMBER_EN}    Phone number
+${HOME_EDIT_LBL_PROPERTYPHONENUMBER_LOCATOR}    id=lblPropertyInfoPhoneNumber
+${HOME_EDIT_TXT_PROPERTYPHONENUMBER_LOCATOR}    id=txtPhoneNumber1
+
+#Fax
+${HOME_EDIT_LBL_PROPERTYFAX_TH}    เบอร์โทรสาร
+${HOME_EDIT_LBL_PROPERTYFAX_EN}    Fax
+${HOME_EDIT_LBL_PROPERTYFAX_LOCATOR}    id=lblPropertyInfoFax
+${HOME_EDIT_TXT_PROPERTYFAX_LOCATOR}    id=txtPropertyInfoFax
+#Add Phone Number
+${HOME_EDIT_LBL_ADDPHONENUMBER_TH}    เพิ่มเบอร์โทรศัพท์
+${HOME_EDIT_LBL_ADDPHONENUMBER_EN}    Add Phone Number
+${HOME_EDIT_LBL_ADDPHONENUMBER_LOCATOR}    id=addPhone
+
+#image remark
+${HOME_EDIT_BTN_CHOOSEFILE_TH}    หมายเหตุ : รูปที่อัพจะต้องมีขนาดไม่เกิน 1 MB
+${HOME_EDIT_BTN_CHOOSEFILE_EN}    Remark : File to upload maximum 1 MB
+${HOME_EDIT_BTN_CHOOSEFILE_LOCATOR}    id=lblPropertyInfoPropertyRemark
+
+#Choose file
+${HOME_EDIT_BTN_CHOOSEFILE_TH}    เลือกไฟล์
+${HOME_EDIT_BTN_CHOOSEFILE_EN}    Choose file
+${HOME_EDIT_BTN_CHOOSEFILE_LOCATOR}    id=btnPropertyInfoChooseFile
+#Email
+${HOME_EDIT_LBL_PROPERTYEMAIL_TH}    อีเมล
+${HOME_EDIT_LBL_PROPERTYEMAIL_EN}    Email
+${HOME_EDIT_LBL_PROPERTYEMAIL_LOCATOR}    id=lblPropertyInfoEmail
+${HOME_EDIT_TXT_PROPERTYEMAIL_LOCATOR}    id=txtPropertyInfoEmail
+
+#Facility
+${HOME_EDIT_LBL_PROPERTYFACILITY_TH}    สิ่งอำนวยความสะดวก
+${HOME_EDIT_LBL_PROPERTYFACILITY_EN}    Facility
+${HOME_EDIT_LBL_PROPERTYFACILITY_LOCATOR}    id=lblPropertyInfoFacility
+#Airport
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST0_TH}    สนามบิน
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST0_EN}    Airport
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST0_LOCATOR}    id=lblPropertyInfoFacilityList0
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST0_LOCATOR}    id=chkPropertyInfoFacilityList0
+#Sky train/Subway
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST1_TH}    รถไฟฟ้า BTS/MRT
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST1_EN}    Sky train/Subway
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST1_LOCATOR}    id=lblPropertyInfoFacilityList1
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST1_LOCATOR}    id=chkPropertyInfoFacilityList1
+#Bus stop
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST2_TH}    ป้ายรถเมล์
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST2_EN}    Bus stop
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST2_LOCATOR}    id=lblPropertyInfoFacilityList2
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST2_LOCATOR}    id=chkPropertyInfoFacilityList2
+#Motorcycle taxi
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST3_TH}    วินมอเตอร์ไซต์
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST3_EN}    Motorcycle taxi
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST3_LOCATOR}    id=lblPropertyInfoFacilityList3
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST3_LOCATOR}    id=chkPropertyInfoFacilityList3
+#Pier
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST4_TH}    ท่าเรือ
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST4_EN}    Pier
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST4_LOCATOR}    id=lblPropertyInfoFacilityList4
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST4_LOCATOR}    id=chkPropertyInfoFacilityList4
+#Convenience store
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST5_TH}    ร้านสะดวกซื้อ
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST5_EN}    Convenience store
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST5_LOCATOR}    id=lblPropertyInfoFacilityList5
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST5_LOCATOR}    id=chkPropertyInfoFacilityList5
+#Department store
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST6_TH}    ห้างสรรพสินค้า
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST6_EN}    Department store
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST6_LOCATOR}    id=lblPropertyInfoFacilityList6
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST6_LOCATOR}    id=chkPropertyInfoFacilityList6
+#Pharmacy
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST7_TH}    ร้านขายยา
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST7_EN}    Pharmacy
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST7_LOCATOR}    id=lblPropertyInfoFacilityList7
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST7_LOCATOR}    id=chkPropertyInfoFacilityList7
+#Hospital/Clinic
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST8_TH}    โรงพยาบาล/คลินิก
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST8_EN}    Hospital/Clinic
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST8_LOCATOR}    id=lblPropertyInfoFacilityList8
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST8_LOCATOR}    id=chkPropertyInfoFacilityList8
+#ATM
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST9_TH}    เอทีเอ็ม
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST9_EN}    ATM
+${HOME_EDIT_LBL_PROPERTYFACILITYLIST9_LOCATOR}    id=lblPropertyInfoFacilityList9
+${HOME_EDIT_CHK_PROPERTYFACILITYLIST9_LOCATOR}    id=chkPropertyInfoFacilityList9
+
+#Cancel
+${HOME_EDIT_BTN_CANCEL_TH}    ยกเลิก
+${HOME_EDIT_BTN_CANCEL_EN}    Cancel
+${HOME_EDIT_BTN_CANCEL_LOCATOR}    id=btnPropertyInfoCancel
+#Seve
+${HOME_EDIT_BTN_SAVE_TH}    บันทึก
+${HOME_EDIT_BTN_SAVE_EN}    Seve
+${HOME_EDIT_BTN_SAVE_LOCATOR}    id=btnPropertyInfoSave
+
+############## Edit User Information ##############
+#Edit User Information
+${HOME_EDIT_LBL_USERINFO_EDITUSERINFO_TH}    แก้ไขข้อมูลผู้ใช้งาน
+${HOME_EDIT_LBL_USERINFO_EDITUSERINFO_EN}    Edit User Information
+${HOME_EDIT_LBL_USERINFO_EDITUSERINFO_LOCATOR}    id=lblUserInformationHearder
+
+#Change Password
+${HOME_EDIT_LBL_USERINFO_CHANGEPASSWORD_TH}    เปลี่ยนรหัสผ่าน
+${HOME_EDIT_LBL_USERINFO_CHANGEPASSWORD_EN}    Change Password
+${HOME_EDIT_LBL_USERINFO_CHANGEPASSWORD_LOCATOR}    id=lblChangePasswordHeader
+
+#Username
+${HOME_EDIT_LBL_USERINFO_USERNAME_TH}    ชื่อผู้ใช้
+${HOME_EDIT_LBL_USERINFO_USERNAME_EN}    Username
+${HOME_EDIT_LBL_USERINFO_USERNAME_LOCATOR}    id=lblUsername
+${HOME_EDIT_TXT_USERINFO_USERNAME_LOCATOR}    id=inputUsername
+#Position
+${HOME_EDIT_LBL_USERINFO_POSITION_TH}    ตำแหน่ง *
+${HOME_EDIT_LBL_USERINFO_POSITION_EN}    Position *
+${HOME_EDIT_LBL_USERINFO_POSITION_LOCATOR}    id=lblPosition
+${HOME_EDIT_DDL_USERINFO_POSITION_LOCATOR}    id=ddlPosition
+#Prefix
+${HOME_EDIT_LBL_USERINFO_PREFIX_TH}    คำนำหน้า
+${HOME_EDIT_LBL_USERINFO_PREFIX_EN}    Prefix
+${HOME_EDIT_LBL_USERINFO_PREFIX_LOCATOR}    id=lblPrefix
+${HOME_EDIT_LBL_USERINFO_PREFIX_PLACEHOLDER_LOCATOR}    css=#ddlPrefix div[class="dx-placeholder"]
+${HOME_EDIT_DDL_USERINFO_PREFIX_LOCATOR}    id=ddlPrefix
+${HOME_EDIT_DDL_USERINFO_PREFIX_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${HOME_EDIT_DDL_USERINFO_PREFIX_CLASS_LOCATOR}    class=dx-list-item-content
+@{HOME_EDIT_DDL_USERINFO_PREFIX_TH_VALUE}    นาย    นาง    นางสาว
+@{HOME_EDIT_DDL_USERINFO_PREFIX_EN_VALUE}    Mr.    Mrs.    Miss
+#First name
+${HOME_EDIT_LBL_USERINFO_FNAME_TH}    ชื่อ *
+${HOME_EDIT_LBL_USERINFO_FNAME_EN}    First name *
+${HOME_EDIT_LBL_USERINFO_FNAME_LOCATOR}    id=lblFirstName
+${HOME_EDIT_TXT_USERINFO_FNAME_LOCATOR}    id=txtFirstName
+#Last name
+${HOME_EDIT_LBL_USERINFO_LNAME_TH}    นามสกุล
+${HOME_EDIT_LBL_USERINFO_LNAME_EN}    Last name
+${HOME_EDIT_LBL_USERINFO_LNAME_LOCATOR}    id=lblLastName
+${HOME_EDIT_TXT_USERINFO_LNAME_LOCATOR}    id=txtLastName
+#Phone number
+${HOME_EDIT_LBL_USERINFO_PHONENUMBER_TH}    เบอร์โทรศัพท์ *
+${HOME_EDIT_LBL_USERINFO_PHONENUMBER_EN}    Phone number *
+${HOME_EDIT_LBL_USERINFO_PHONENUMBER_LOCATOR}    id=lblPhoneNumber
+${HOME_EDIT_TXT_USERINFO_PHONENUMBER_LOCATOR}    id=txtPhoneNumber
+#Email
+${HOME_EDIT_LBL_USERINFO_EMAIL_TH}    อีเมล
+${HOME_EDIT_LBL_USERINFO_EMAIL_EN}    Email
+${HOME_EDIT_LBL_USERINFO_EMAIL_LOCATOR}    id=lblEmail
+${HOME_EDIT_TXT_USERINFO_EMAIL_LOCATOR}    id=txtEmail
+#Identification No. / Passport No.
+${HOME_EDIT_LBL_USERINFO_IDENTIFICATIONPASSPORTNO_TH}    เลขบัตรประชาชน/เลขพาสปอร์ต
+${HOME_EDIT_LBL_USERINFO_IDENTIFICATIONPASSPORTNO_EN}    Identification No. / Passport No.
+${HOME_EDIT_LBL_USERINFO_IDENTIFICATIONPASSPORTNO_LOCATOR}    id=lblIdentificationNoPassportNo
+${HOME_EDIT_TXT_USERINFO_IDENTIFICATIONPASSPORTNO_LOCATOR}    id=txtIdentificationNoPassportNo
+#Building access
+${HOME_EDIT_LBL_USERINFO_BUILDINGACCESS_TH}    สิทธิ์การเข้าถึงอาคาร
+${HOME_EDIT_LBL_USERINFO_BUILDINGACCESS_EN}    Building access
+${HOME_EDIT_LBL_USERINFO_BUILDINGACCESS_LOCATOR}    id=lblBuildingAccess
+#Select / Unselect all
+${HOME_EDIT_LBL_USERINFO_SELECTUNSELECTALL_TH}    เลือก/ไม่เลือกทั้งหมด
+${HOME_EDIT_LBL_USERINFO_SELECTUNSELECTALL_EN}    Select / Unselect all
+${HOME_EDIT_LBL_USERINFO_SELECTUNSELECTALL_LOCATOR}    id=lblSelectUnselectAll
+${HOME_EDIT_CHK_USERINFO_SELECTUNSELECTALL_LOCATOR}    id=chkSelectUnselectAll
+#Project of Building
+${HOME_EDIT_LBL_USERINFO_PROJECTOFBUILDING_TH}    โครงการ FonTest
+${HOME_EDIT_LBL_USERINFO_PROJECTOFBUILDING_EN}    Project of Building FonTest
+${HOME_EDIT_LBL_USERINFO_PROJECTOFBUILDING_LOCATOR}    id=lblProjectOfBuilding
+
+#Current Password
+${HOME_EDIT_LBL_USERINFO_CURRENTPASSWORD_TH}    รหัสผ่านปัจจุบัน *
+${HOME_EDIT_LBL_USERINFO_CURRENTPASSWORD_EN}    Current Password *
+${HOME_EDIT_LBL_USERINFO_CURRENTPASSWORD_LOCATOR}    id=lblCurrentPassword
+${HOME_EDIT_TXT_USERINFO_CURRENTPASSWORD_LOCATOR}    id=txtCurrentPassword 
+#New Password
+${HOME_EDIT_LBL_USERINFO_NEWPASSWORD_TH}    รหัสผ่านใหม่ *
+${HOME_EDIT_LBL_USERINFO_NEWPASSWORD_EN}    New Password *
+${HOME_EDIT_LBL_USERINFO_NEWPASSWORD_LOCATOR}    id=lblNewPassword
+${HOME_EDIT_TXT_USERINFO_NEWPASSWORD_LOCATOR}    id=txtNewPassword 
+#Confirm New Password
+${HOME_EDIT_LBL_USERINFO_CONFIRMNEWPASSWORD_TH}   ยืนยันรหัสผ่านใหม่ *
+${HOME_EDIT_LBL_USERINFO_CONFIRMNEWPASSWORD_EN}    Confirm New Password *
+${HOME_EDIT_LBL_USERINFO_CONFIRMNEWPASSWORD_LOCATOR}    id=lblConfirmNewPassword
+${HOME_EDIT_TXT_USERINFO_CONFIRMNEWPASSWORD_LOCATOR}    id=txtConfirmNewPassword
+
+#Cancel
+${HOME_EDIT_BTN_USERINFO_CANCEL_TH}    ยกเลิก
+${HOME_EDIT_BTN_USERINFO_CANCEL_EN}    Cancel
+${HOME_EDIT_BTN_USERINFO_CANCEL_LOCATOR}    id=btnCancel
+
+#Seve
+${HOME_EDIT_BTN_USERINFO_SAVE_TH}    บันทึก
+${HOME_EDIT_BTN_USERINFO_SAVE_EN}    Save
+${HOME_EDIT_BTN_USERINFO_SAVE_LOCATOR}    id=btnSave
+#Close
+${HOME_EDIT_BTN_USERINFO_CLOSE_LOCATOR}    id=btnUserInformationClose
+
+############## RMS_View_Home_00000 ############## 
+#capture page screenshot
+${HOME_VIEW_00000_SCREENSHOT1}    RMS_View_Home_00000_Screen1.png
+${HOME_VIEW_00000_SCREENSHOT2}    RMS_View_Home_00000_Screen2.png
+${HOME_VIEW_00000_SCREENSHOT3}    RMS_View_Home_00000_Screen3.png
+${HOME_VIEW_00000_SCREENSHOT4}    RMS_View_Home_00000_Screen4.png
+${HOME_VIEW_00000_SCREENSHOT5}    RMS_View_Home_00000_Screen5.png
+
+#title
+${HOME_VIEW_00000_LBL_TITLE}    SmartRMS
+
+############## RMS_View_HomeLogin_00001 ############## 
+#capture page screenshot
+${HOME_VIEW_00001_SCREENSHOT}    RMS_View_Home_00001_Screen.png
+
+#title
+${HOME_VIEW_00001_LBL_TITLE}    SmartRMS
+
+############## RMS_Add_Home_00000 ############## 
+#capture page screenshot
+${HOME_ADD_00000_SCREENSHOT}    RMS_Add_Home_00000_Screen.png
+
+#title
+${HOME_ADD_00000_LBL_TITLE}    SmartRMS
+
+############## RMS_Edit_Home_00000 ############## 
+#capture page screenshot
+${HOME_EDIT_00000_SCREENSHOT}    RMS_Edit_Home_00000_Screen.png
+
+#title
+${HOME_EDIT_00000_LBL_TITLE}    SmartRMS
+
+############## RMS_Edit_Home_00001 ############## 
+#capture page screenshot
+${HOME_EDIT_00001_SCREENSHOT}    RMS_Edit_Home_00001_Screen.png
+
+#title
+${HOME_EDIT_00001_LBL_TITLE}    SmartRMS
+
+############## RMS_Edit_Home_00002 ############## 
+#capture page screenshot
+${HOME_EDIT_00002_SCREENSHOT}    RMS_Edit_Home_00002_Screen.png
+
+#title
+${HOME_EDIT_00002_LBL_TITLE}    SmartRMS
+
+
+
+
+
+
+
+

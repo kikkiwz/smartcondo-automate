@@ -1,0 +1,667 @@
+*** Variables ***
+
+#===================================================  SEARCH  =============================================================================#
+#ห้องทั้งหมด 20 ห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOM_TH}    ห้องทั้งหมด [totalroom] ห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOM_EN}    Total [totalroom] room
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOM_LOCATOR}    id=lblTotalRoom
+
+
+#ICON ClosrDoor
+${ROOMMANAGEMENT_SEARCH_ICON_CLOSEDOOR_LOCATOR}   xpath=//*[@id="link1"]/div
+
+#ICON OpenDoor
+${ROOMMANAGEMENT_SEARCH_ICON_OPENDOOR_LOCATOR}   xpath=//*[@id="link2"]/div
+
+#จำนวนห้องโอนแล้ว 1 ห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOMTANFER_TH}    จำนวนห้องโอนแล้ว [count] ห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOMTANFER_EN}    Transferred [count] room
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOMTANFER_LOCATOR}   xpath=/html/body/app-root/app-layouts/div/app-property/app-roomlist/section/div/div[1]/div/div/dx-popover[1]          
+
+
+#จำนวนห้องว่าง xxx ห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOMEMPTY_TH}    จำนวนห้องว่าง [count] ห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOMEMPTY_EN}    Empty [count] room
+${ROOMMANAGEMENT_SEARCH_LBL_TOTALROOMEMPTY_LOCATOR}   xpath=/html/body/app-root/app-layouts/div/app-property/app-roomlist/section/div/div[1]/div/div/dx-popover[2]
+
+
+
+
+#Status Dropdown
+${ROOMMANAGEMENT_SEARCH_LBL_STATUS_TH}    สถานะ 
+${ROOMMANAGEMENT_SEARCH_LBL_STATUS_EN}    Status
+${ROOMMANAGEMENT_SEARCH_LBL_STATUS_LOCATOR}    id=lblstatus
+${ROOMMANAGEMENT_SEARCH_DDL_STATUS_LOCATOR}    id=input_ddlStatus
+${ROOMMANAGEMENT_SEARCH_DDL_STATUS_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${ROOMMANAGEMENT_SEARCH_DDL_STATUS_CLASS_LOCATOR}    class=dx-list-item-content
+@{ROOMMANAGEMENT_SEARCH_DDL_STATUS_TH_VALUE}    ทั้งหมด    ห้องว่าง    ห้องโอนแล้ว
+@{ROOMMANAGEMENT_SEARCH_DDL_STATUS_EN_VALUE}    All    Empty room    Transferred
+
+
+#Search
+${ROOMMANAGEMENT_SEARCH_BTN_SEARCH_TH}    ค้นหา
+${ROOMMANAGEMENT_SEARCH_BTN_SEARCH_EN}    Search
+${ROOMMANAGEMENT_SEARCH_BTN_SEARCH_LOCATOR}    id=btnSearch
+#Clear
+${ROOMMANAGEMENT_SEARCH_BTN_CLEAR_TH}    คืนค่า
+${ROOMMANAGEMENT_SEARCH_BTN_CLEAR_EN}    Clear
+${ROOMMANAGEMENT_SEARCH_BTN_CLEAR_LOCATOR}    id=btnClear
+
+
+#Locator Name Room
+${ROOMMANAGEMENT_SEARCH_LBL_NAMEROOM_LOCATOR}    id=lblRoomNo[number]
+
+#Locator Floor
+${ROOMMANAGEMENT_SEARCH_LBL_FLOOR_TH}    ชั้น 
+${ROOMMANAGEMENT_SEARCH_LBL_FLOOR_EN}    Floor
+${ROOMMANAGEMENT_SEARCH_LBL_FLOOR_LOCATOR}    id=roomFloor
+${ROOMMANAGEMENT_SEARCH_LBL_NUMBERFLOOR_LOCATOR}    id=Floor[number]
+
+
+#Locator Room
+${ROOMMANAGEMENT_SEARCH_BTN_ROOMA101_LOCATOR}    id=btnRoomA101
+
+
+#Locator Room
+${ROOMMANAGEMENT_SEARCH_BTN_ROOMA102_LOCATOR}    id=btnRoomA102
+
+
+#Locator Room
+${ROOMMANAGEMENT_SEARCH_BTN_ROOMA103_LOCATOR}    id=btnRoomA103
+
+
+#=============================Verify screen popup "room"================================
+
+#Icon X Close
+${ROOMMANAGEMENT_BTN_CLOSE_LOCATOR}    class=ant-modal-close-x
+
+
+
+# ประเภทห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMTYPE_TH}    ประเภทห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMTYPE_EN}    Room type
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMTYPE_LOCATOR}    id=roomsType
+
+
+# สถานะห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMSTATUS_TH}    สถานะห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMSTATUS_EN}    Room status
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMSTATUS_LOCATOR}    id=Roomstatus
+
+
+# ห้องโอนแล้ว
+${ROOMMANAGEMENT_SEARCH_LBL_TRANSFERRED_TH}    ห้องโอนแล้ว
+${ROOMMANAGEMENT_SEARCH_LBL_TRANSFERRED_EN}    Transferred
+${ROOMMANAGEMENT_SEARCH_LBL_TRANSFERRED_LOCATOR}    id=RoomTransferred
+
+
+# ห้องว่าง
+${ROOMMANAGEMENT_SEARCH_LBL_EMPTYROOM_TH}    ห้องว่าง
+${ROOMMANAGEMENT_SEARCH_LBL_EMPTYROOM_EN}    Empty
+${ROOMMANAGEMENT_SEARCH_LBL_EMPTYROOM_LOCATOR}    id=RoomEmpty
+
+
+# ปิดปรับปรุง
+${ROOMMANAGEMENT_SEARCH_LBL_WAITINGFORPAYMENT_TH}    ปิดปรับปรุง
+${ROOMMANAGEMENT_SEARCH_LBL_WAITINGFORPAYMENT_EN}    Waiting for payment
+${ROOMMANAGEMENT_SEARCH_LBL_WAITINGFORPAYMENT_LOCATOR}    id=RoomRenovations
+
+
+# รอชำระเงิน
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMRENOVATIONS_TH}    รอชำระเงิน
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMRENOVATIONS_EN}    Room renovations
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMRENOVATIONS_LOCATOR}    id=lblInfoRoomNo
+
+
+# ดูข้อมูลห้องพัก
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAILS_TH}    ดูข้อมูลห้องพัก
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAILS_EN}    Room details
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAILS_LOCATOR}    id=ViewRoomDetail
+
+
+# ดูข้อมูลเจ้าของห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_VIEWOWNERINFORMATION_TH}    ดูข้อมูลเจ้าของห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_VIEWOWNERINFORMATION_EN}    View owner information
+${ROOMMANAGEMENT_SEARCH_LBL_VIEWOWNERINFORMATION_LOCATOR}    id=ViewOwnerInformation
+
+
+# เพิ่มข้อมูลเจ้าของห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_CREATEROOMOWNER_TH}    เพิ่มข้อมูลเจ้าของห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_CREATEROOMOWNER_EN}    Create room owner
+${ROOMMANAGEMENT_SEARCH_LBL_CREATEROOMOWNER_LOCATOR}    id=CreateRoomOwner
+
+
+
+#=============================Popup Room Details =============================================# 
+
+# header : เลขห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUP_ROOMA101_TH}    ห้อง A101
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUP_ROOMA101_EN}    Room A101
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUP_ROOMA101_LOCATOR}    id=lblInfoRoomNo
+
+
+
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAIL_TH}    ข้อมูลห้องพัก
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAIL_EN}    Room detail
+${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAIL_LOCATOR}    xpath=/html/body/div/div[2]/div/nz-modal-container/div/div/div[2]/app-view-room/nz-tabset/nz-tabs-nav/div/div/div[1]/div
+
+
+${ROOMMANAGEMENT_SEARCH_LBL_INCOMEDETAILS_TH}    ข้อมูลรายได้
+${ROOMMANAGEMENT_SEARCH_LBL_INCOMEDETAILS_EN}    Income details
+${ROOMMANAGEMENT_SEARCH_LBL_INCOMEDETAILS_LOCATOR}    xpath=/html/body/div/div[2]/div/nz-modal-container/div/div/div[2]/app-view-room/nz-tabset/nz-tabs-nav/div/div/div[2]/div
+
+${ROOMMANAGEMENT_SEARCH_LBL_ROOM_NO_TH}    เลขที่ - ชื่อห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_ROOM_NO_EN}    Room no
+${ROOMMANAGEMENT_SEARCH_LBL_ROOM_NO_LOCATOR}    id=lblRoomNo
+${ROOMMANAGEMENT_SEARCH_LBD_ROOM_NO_LOCATOR}    id=lbdRoomNo
+${ROOMMANAGEMENT_SEARCH_TXT_ROOM_NO_LOCATOR}    id=input_lbdRoomNo
+
+
+${ROOMMANAGEMENT_SEARCH_LBL_HOUSE_NO_TH}    บ้านเลขที่
+${ROOMMANAGEMENT_SEARCH_LBL_HOUSE_NO_EN}    House no
+${ROOMMANAGEMENT_SEARCH_LBL_HOUSE_NO_LOCATOR}    id=lblHouseNo
+${ROOMMANAGEMENT_SEARCH_LBD_HOUSE_NO_LOCATOR}    id=lbdHouseNo
+${ROOMMANAGEMENT_SEARCH_TXT_HOUSE_NO_LOCATOR}    id=input_lbdHouseNo
+
+${ROOMMANAGEMENT_SEARCH_LBL_SAREA_TH}    S พื้นที่ (ตรม.)
+${ROOMMANAGEMENT_SEARCH_LBL_SAREA_EN}    S Area (square meter)
+${ROOMMANAGEMENT_SEARCH_LBL_SAREA_LOCATOR}    id=lblServiceType
+${ROOMMANAGEMENT_SEARCH_LBD_SAREA_LOCATOR}    id=lbdServiceType
+${ROOMMANAGEMENT_SEARCH_TXT_SAREA_LOCATOR}    id=input_lbdServiceType
+
+${ROOMMANAGEMENT_SEARCH_LBL_PROPRIETARYRATIO_TH}    อัตราส่วนกรรมสิทธิ์
+${ROOMMANAGEMENT_SEARCH_LBL_PROPRIETARYRATIO_EN}    Proprietary ratio
+${ROOMMANAGEMENT_SEARCH_LBL_PROPRIETARYRATIO_LOCATOR}    id=lblProprietaryRatio
+${ROOMMANAGEMENT_SEARCH_LBD_PROPRIETARYRATIO_LOCATOR}    id=lbdProprietaryRatio
+${ROOMMANAGEMENT_SEARCH_TXT_PROPRIETARYRATIO_LOCATOR}    id=input_lbdProprietaryRatio
+
+
+${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERNO_TH}    เลขที่มิเตอร์น้ำ
+${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERNO_EN}    Water meter no
+${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERNO_LOCATOR}    id=lblwaterMeterNo
+${ROOMMANAGEMENT_SEARCH_LBD_WATERMETERNO_LOCATOR}    id=lbdwaterMeterNo
+${ROOMMANAGEMENT_SEARCH_TXT_WATERMETERNO_LOCATOR}    id=input_lbdwaterMeterNo
+
+${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERNO_TH}    เลขที่มิเตอร์ไฟ
+${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERNO_EN}    Electric meter no
+${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERNO_LOCATOR}    id=lblElectricChargeType
+${ROOMMANAGEMENT_SEARCH_LBD_ELECTRICMETERNO_LOCATOR}    id=lbdElectricChargeType
+${ROOMMANAGEMENT_SEARCH_TXT_ELECTRICMETERNO_LOCATOR}    id=input_lbdElectricChargeType
+
+
+${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERLIMITUNIT_TH}    จำนวนหลักมิเตอร์น้ำ
+${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERLIMITUNIT_EN}    Water meter limit unit
+${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERLIMITUNIT_LOCATOR}    id=lblWaterMeterLimitUnit
+${ROOMMANAGEMENT_SEARCH_LBD_WATERMETERLIMITUNIT_LOCATOR}    id=lbdWaterMeterLimitUnit
+${ROOMMANAGEMENT_SEARCH_TXT_WATERMETERLIMITUNIT_LOCATOR}    id=input_lbdWaterMeterLimitUnit
+
+
+${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERLIMITUNIT_TH}    จำนวนหลักมิเตอร์ไฟ
+${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERLIMITUNIT_EN}    Electric meter limit unit
+${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERLIMITUNIT_LOCATOR}    id=lblElectricMeterLimitUnit
+${ROOMMANAGEMENT_SEARCH_LBD_ELECTRICMETERLIMITUNIT_LOCATOR}    id=lbdElectricMeterLimitUnit
+${ROOMMANAGEMENT_SEARCH_TXT_ELECTRICMETERLIMITUNIT_LOCATOR}    id=input_lbdElectricMeterLimitUnit
+
+
+
+
+#================ popup Create Owner ==============================#
+
+# header : ห้อง {เลขห้อง}
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUPCREATE_ROOMA102_TH}    ห้อง A102
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUPCREATE_ROOMA102_EN}    Room A102
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUPCREATE_ROOMA102_LOCATOR}    id=lblCreateRoomNo
+
+
+
+#================ popup View Owner ==============================#
+
+# header : ข้อมูลเจ้าของห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUPVIEW_OWNERINFORMATION_TH}    ข้อมูลเจ้าของห้อง
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUPVIEW_OWNERINFORMATION_EN}    Owner information
+${ROOMMANAGEMENT_SEARCH_LBL_HEADERPOPUPVIEW_OWNERINFORMATION_LOCATOR}    id=lblViewOwnerInformation
+
+
+
+
+#=========================================================================================================================================================#
+
+
+
+
+#======================================================== VIEW ==================================================================================
+
+#=============================Popup Room Details and In come =============================================# 
+
+# header : เลขห้อง
+${ROOMMANAGEMENT_VIEW_LBL_HEADERPOPUPVIEW_ROOMA103_TH}    ห้อง A103
+${ROOMMANAGEMENT_VIEW_LBL_HEADERPOPUPVIEW_ROOMA103_EN}    Room A103
+${ROOMMANAGEMENT_VIEW_LBL_HEADERPOPUPVIEW_ROOMNOHEADER_LOCATOR}    xpath=/html/body/div/div[2]/div/nz-modal-container/div/div/div[1]/div/div/div/span
+
+# colum : รหัสรายได้
+${ROOMMANAGEMENT_VIEW_LBL_COLUM_INCOMECODE_TH}    รหัสรายได้
+${ROOMMANAGEMENT_VIEW_LBL_COLUM_INCOMECODE_EN}    Income code
+${ROOMMANAGEMENT_VIEW_LBL_COLUM_INCOMECODE_LOCATOR}    id=dx-col-1
+
+# colum : ชื่อรายได้
+${ROOMMANAGEMENT_VIEW_LBL_COLUM_INCOMENAME_TH}    ชื่อรายได้
+${ROOMMANAGEMENT_VIEW_LBL_COLUM_INCOMENAME_EN}    Income name
+${ROOMMANAGEMENT_VIEW_LBL_COLUM_INCOMENAME_LOCATOR}    id=dx-col-2
+
+
+#No Data
+${ROOMMANAGEMENT_VIEW_LBL_RESULT_NODATA_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[6]/span
+${ROOMMANAGEMENT_VIEW_NUMCOL}    2
+@{ROOMMANAGEMENT_VIEW_LBL_FIELD_HEADER_TABLE_VALUE_TH}    Incomecode    Incomename
+#For check value table
+${ROOMMANAGEMENT_VIEW_LBL_RESULT_DATA_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[6]/div/div/div[1]/div/table/tbody/tr[row]/td[col]
+                                                  
+
+
+
+
+
+
+#======================================================== SC USER ==================================================================================
+
+#Locator Name Room
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_NAMEROOM_LOCATOR}    id=btnRoom[number]
+
+#Locator Floor
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_FLOOR_TH}    ชั้น 
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_FLOOR_EN}    Floor
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_FLOOR_LOCATOR}    id=roomFloor
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_NUMBERFLOOR_LOCATOR}    id=numberFloor[number]
+
+
+#======================================SEARCH PAGE ================================================#
+# Header : ข้อมูลห้องพัก
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_TABHEADER_ROOMDETAILS_TH}    ข้อมูลห้องพัก
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_TABHEADER_ROOMDETAILS_EN}    Room details
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_TABHEADER_ROOMDETAILS_LOCATOR}    id=SettingFloorandRoom
+
+# Dropdown : Account
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_ACCOUNT_TH}    Account
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_ACCOUNT_EN}    Account
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_ACCOUNT_LOCATOR}    id=lblAccount
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_ACCOUNT_LOCATOR}    id=input_ddlAccount
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_ACCOUNT_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_ACCOUNT_CLASS_LOCATOR}    class=dx-list-item-content
+@{ROOMMANAGEMENT_SEARCHADMIN_DDL_ACCOUNT_TH_VALUE}    SmartRmsCondo    User1    AppleUser    UserCondo1    อชิรญา    Puttita    condosupport    ณภัทร    robottest    User2    UserCondo2    AdminCondo    ImportPropertyTest         
+@{ROOMMANAGEMENT_SEARCHADMIN_DDL_ACCOUNT_EN_VALUE}    SmartRmsCondo    User1    AppleUser    UserCondo1    อชิรญา    Puttita    condosupport    ณภัทร    robottest    User2    UserCondo2    AdminCondo    ImportPropertyTest
+
+# Dropdown : Property
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_PROPERTY_TH}    โครงการ
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_PROPERTY_EN}    Property
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_PROPERTY_LOCATOR}    id=lblProperty
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_PROPERTY_LOCATOR}    id=input_ddlProperty
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_PROPERTY_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_PROPERTY_CLASS_LOCATOR}    class=dx-list-item-content
+@{ROOMMANAGEMENT_SEARCHADMIN_DDL_PROPERTY_TH_VALUE}    SmartRmsCondo B    SmartRmsCondo A             
+@{ROOMMANAGEMENT_SEARCHADMIN_DDL_PROPERTY_EN_VALUE}    SmartRmsCondo B    SmartRmsCondo A
+
+
+
+
+
+# Dropdown : Building
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_BUILDING_TH}    อาคาร
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_BUILDING_EN}    Building
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_BUILDING_LOCATOR}    id=lblBuilding
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_BUILDING_LOCATOR}    id=input_ddlBuilding
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_BUILDING_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${ROOMMANAGEMENT_SEARCHADMIN_DDL_BUILDING_CLASS_LOCATOR}    class=dx-list-item-content
+@{ROOMMANAGEMENT_SEARCHADMIN_DDL_BUILDING_TH_VALUE}    ศุภากรเพลส         
+@{ROOMMANAGEMENT_SEARCHADMIN_DDL_BUILDING_EN_VALUE}    ศุภากรเพลส
+
+
+#Locator Floor
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_FLOOR_TH}    ชั้น 
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_FLOOR_EN}    Floor
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_FLOOR_LOCATOR}    id=roomFloor
+
+
+#Locator Btn AddRoom
+${ROOMMANAGEMENT_SEARCHADMIN_BTN_ADDROOM_LOCATOR}    id=btnAddRoom
+#Locator Btn AddFloor
+${ROOMMANAGEMENT_SEARCHADMIN_BTN_ADDFLOOR_LOCATOR}    id=btnAddFloor
+${ROOMMANAGEMENT_SEARCHADMIN_TXT_ADDFLOOR_LOCATOR}    id=input_txtFloor
+${ROOMMANAGEMENT_SEARCHADMIN_VALUE_ADDFLOOR_LOCATOR}    5
+
+#Locator Room A103
+${ROOMMANAGEMENT_SEARCHADMIN_BTN_ROOMA103_LOCATOR}    id=btnRoomA103
+#Locator Room A104
+${ROOMMANAGEMENT_SEARCHADMIN_BTN_ROOMA104_LOCATOR}    id=btnRoomA104
+#Locator Room no
+${ROOMMANAGEMENT_SEARCHADMIN_BTN_ROOMNO_LOCATOR}    id=btnRoom[room_no]
+
+#Locator Room no Delete
+${ROOMMANAGEMENT_SEARCHADMIN_BTN_DELETEROOMNO_LOCATOR}    id=btnDeleteRoom[room_no]
+
+#Locator For Check Action Delete
+${ROOMMANAGEMENT_SEARCHADMIN_BTNDELETE_ROOMA104_LOCATOR}    id=btnDeleteRoomA104
+
+#Locator For Check Action Delete
+${ROOMMANAGEMENT_SEARCHADMIN_BTNDELETE_ROOM999_LOCATOR}    id=btnDeleteRoom999
+
+
+
+#Remark
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_REMARK_TH}    หมายเหตุ : ห้องที่โอนแล้ว ไม่สามารถลบได้ กรณีลบห้อง ข้อมูลห้องจะหายไปทั้งหมด 
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_REMARK_EN}    Remark : Rooms with ownership transferred cannot be deleted. In the event of deleting a room, all room information will be lost.
+${ROOMMANAGEMENT_SEARCHADMIN_LBL_REMARK_LOCATOR}    id=remark
+
+
+
+
+
+
+#======================================EDIT / CREATE PAGE ================================================#
+
+# แก้ไขข้อมูลห้องพัก
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_EDITROOMDETAIL_TH}    แก้ไขข้อมูลห้องพัก
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_EDITROOMDETAIL_EN}    Edit room detail
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_EDITROOMDETAIL_LOCATOR}    id=editDataRoom
+
+# เพิ่มข้อมูลห้องพัก
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_CREATEROOM_TH}    เพิ่มข้อมูลห้องพัก
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_CREATEROOM_EN}    Create room
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_CREATEROOM_LOCATOR}    id=addDataRoom
+
+
+# ข้อมูลรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMEDETAILS_TH}    ข้อมูลรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMEDETAILS_EN}    Income details
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMEDETAILS_LOCATOR}    xpath=/html/body/div/div[2]/div/nz-modal-container/div/div/div[2]/nz-tabset/nz-tabs-nav/div/div/div[2]/div
+
+
+# Room no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ROOMNO_TH}    เลขที่ - ชื่อห้อง 
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ROOMNO_EN}    Room no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ROOMNO_LOCATOR}    id=lblRoomNo
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_ROOMNO_LOCATOR}    id=input_txtRoomNo
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE_ROOMNO_LOCATOR}    999
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE2_ROOMNO_LOCATOR}    888
+
+# House no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_HOUSENO_TH}    บ้านเลขที่ 
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_HOUSENO_EN}    House no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_HOUSENO_LOCATOR}    id=lblHouseNo
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_HOUSENO_LOCATOR}    id=input_txtHouseNo
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE_HOUSENO_LOCATOR}    94
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE2_HOUSENO_LOCATOR}    78
+
+# Area (square meter)
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_AREA_TH}    พื้นที่ (ตรม.) 
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_AREA_EN}    Area (square meter)
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_AREA_LOCATOR}    id=lblArea
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_AREA_LOCATOR}    id=input_txtArea
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_VALUE_LOCATOR}    100
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_VALUE2_LOCATOR}    123
+
+# Proprietary ratio
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_PROPRIETARYRATIO_TH}    อัตราส่วนกรรมสิทธิ์ 
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_PROPRIETARYRATIO_EN}    Proprietary ratio
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_PROPRIETARYRATIO_LOCATOR}    id=lblProprietaryRatio
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_PROPRIETARYRATIO_LOCATOR}    id=input_txtProprietaryRatio
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_VALUE_PROPRIETARYRATIO_LOCATOR}    456
+
+
+# Water meter no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_WATERMETERNO_TH}    เลขที่มิเตอร์น้ำ  
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_WATERMETERNO_EN}    Water meter no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_WATERMETERNO_LOCATOR}    id=lblWaterMeterNo
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_WATERMETERNO_LOCATOR}    id=input_txtWaterMeterNo
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE_WATERMETERNO_LOCATOR}    99
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE2_WATERMETERNO_LOCATOR}    88
+
+
+# Electric meter no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ELECTRICMETERNO_TH}    เลขที่มิเตอร์ไฟ 
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ELECTRICMETERNO_EN}    Electric meter no
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ELECTRICMETERNO_LOCATOR}    id=lblElectricMeterNo
+${ROOMMANAGEMENT_ADDEDITADMIN_TXT_ELECTRICMETERNO_LOCATOR}    id=input_txtElectricMeterNo
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE_ELECTRICMETERNO_LOCATOR}    99
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE2_ELECTRICMETERNO_LOCATOR}    88
+
+# Water meter limit unit
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_WATERMETERLIMITUNIT_TH}    จำนวนหลักมิเตอร์น้ำ 
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_WATERMETERLIMITUNIT_EN}    Water meter limit unit
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_WATERMETERLIMITUNIT_LOCATOR}    id=lblWaterMeterLimitUnit
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_WATERMETERLIMITUNIT_LOCATOR}    id=input_ddlWaterMeterLimitUnit
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_WATERMETERLIMITUNIT_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_WATERMETERLIMITUNIT_CLASS_LOCATOR}    class=dx-list-item-content
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE_WATERMETERLIMITUNIT_LOCATOR}    999.99    9999.99    99999.99    999999.99    99999999.99
+${ROOMMANAGEMENT_ADDEDITADMIN_WATERMETERLIMITUNIT_VALUE}    999.99
+${ROOMMANAGEMENT_ADDEDITADMIN_WATERMETERLIMITUNIT_VALUE2}    9999.99
+
+# Electric meter limit unit
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ELECTRICMETERLIMITUNIT_TH}    จำนวนหลักมิเตอร์ไฟ 
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ELECTRICMETERLIMITUNIT_EN}    Electric meter limit unit
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ELECTRICMETERLIMITUNIT_LOCATOR}    id=lblElectricMeterLimitUnit
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_ELECTRICMETERLIMITUNIT_LOCATOR}    id=input_ddlElectricMeterLimitUnit
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_ELECTRICMETERLIMITUNIT_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_ELECTRICMETERLIMITUNIT_CLASS_LOCATOR}    class=dx-list-item-content
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE_ELECTRICMETERLIMITUNIT_LOCATOR}    999.99    9999.99    99999.99    999999.99    99999999.99
+${ROOMMANAGEMENT_ADDEDITADMIN_ELECTRICMETERLIMITUNIT_VALUE}    999.99
+${ROOMMANAGEMENT_ADDEDITADMIN_ELECTRICMETERLIMITUNIT_VALUE2}    9999.99
+
+
+
+#Cancel
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CANCEL_TH}    ยกเลิก
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CANCEL_EN}    Cancel
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CANCEL_LOCATOR}    id=btnCancelRoomDetail
+
+#บันทึก
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_SAVE_TH}    บันทึก
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_SAVE_EN}    Save
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_SAVE_LOCATOR}    id=btnSaveRoomDetail
+
+
+#====================================== Income PAGE ================================================#
+
+#Room details
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ROOMDETAIL_TH}    ข้อมูลห้องพัก
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ROOMDETAIL_EN}    Room detail
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_ROOMDETAIL_LOCATOR}    xpath=/html/body/div[2]/div[2]/div/nz-modal-container/div/div/div[2]/nz-tabset/nz-tabs-nav/div/div/div[1]/div
+
+
+#Income details
+# ${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMEDETAILS_TH}    ข้อมูลรายได้
+# ${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMEDETAILS_EN}    Income details
+# ${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMEDETAILS_LOCATOR}    xpath=/html/body/div[2]/div[2]/div/nz-modal-container/div/div/div[2]/nz-tabset/nz-tabs-nav/div/div/div[2]/div
+
+#รหัสรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMECODE_TH}    รหัสรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMECODE_EN}    Income code
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_INCOMECODE_LOCATOR}    id=lblIncomeCode
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_INCOMECODE_LOCATOR}    id=ddlIncomeCode
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_INCOMECODE_LIST_LOCATOR}    xpath=/html/body/div/div/div/div/div[1]/div/div[1]/div[2]/div[replace_indexList]/div
+${ROOMMANAGEMENT_ADDEDITADMIN_DDL_INCOMECODE_CLASS_LOCATOR}    class=dx-list-item-content
+${ROOMMANAGEMENT_ADDEDITADMIN_VALUE_INCOMECODE_LOCATOR}    รหัสรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_INCOMECODE_VALUE}   รหัสรายได้
+
+
+#Cancel
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CANCELINCOMECODE_TH}    ยกเลิก
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CANCELINCOMECODE_EN}    Cancel
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CANCELINCOMECODE_LOCATOR}    id=btnCancelIncomeCode
+
+#บันทึก
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_SAVEINCOMECODE_TH}    บันทึก
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_SAVEINCOMECODE_EN}    Save
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_SAVEINCOMECODE_LOCATOR}    id=btnSaveIncomeCode
+
+#เพิ่มข้อมูลรหัสรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CREATEINCOMECODE_TH}    เพิ่มข้อมูลรหัสรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CREATEINCOMECODE_EN}    Create income code
+${ROOMMANAGEMENT_ADDEDITADMIN_BTN_CREATEINCOMECODE_LOCATOR}    id=btnCreateIncomeCode
+
+
+# colum : รหัสรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_COLUM_INCOMECODE_TH}    รหัสรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_COLUM_INCOMECODE_EN}    Income code
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_COLUM_INCOMECODE_LOCATOR}    id=dx-col-4
+
+# colum : ชื่อรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_COLUM_INCOMENAME_TH}    ชื่อรายได้
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_COLUM_INCOMENAME_EN}    Income name
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_COLUM_INCOMENAME_LOCATOR}    id=dx-col-5
+
+#Delete icon locator
+${ROOMMANAGEMENT_ADDEDITADMIN_ICON_DELETE_LOCATOR}    id=btnDelete1
+
+#No Data
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_RESULT_NODATA_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[6]/span
+${ROOMMANAGEMENT_ADDEDITADMIN_NUMCOL}    2
+@{ROOMMANAGEMENT_ADDEDITADMIN_LBL_FIELD_HEADER_TABLE_VALUE_TH}    Incomecode    Incomename
+#For check value table
+${ROOMMANAGEMENT_ADDEDITADMIN_LBL_RESULT_DATA_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[6]/div/div/div[1]/div/table/tbody/tr[row]/td[col]
+
+
+${ROOMMANAGEMENT_LBL_PAGE_1}    1
+${ROOMMANAGEMENT_LBL_PAGE_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[10]/div/div[3]
+
+
+${ROOMMANAGEMENT_LBL_PagesXFromY_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[10]/div/div[1]
+${ROOMMANAGEMENT_ICON_ARRORWLEFT_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[10]/div/div[2]
+${ROOMMANAGEMENT_ICON_ARRORWRIGHT_LOCATOR}    xpath=//*[@id="contractListOptions"]/div/div[10]/div/div[4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################-- Value Dropdown --################################################################
+#Status *
+${ROOMMANAGEMENT_STATUS_TH_VALUE1}    ทั้งหมด
+${ROOMMANAGEMENT_STATUS_EN_VALUE1}    ALL
+
+${ROOMMANAGEMENT_STATUS_TH_VALUE2}    ห้องว่าง
+${ROOMMANAGEMENT_STATUS_EN_VALUE2}    Empty room
+${ROOMMANAGEMENT_STATUSID_VALUE2}    1
+
+${ROOMMANAGEMENT_STATUS_TH_VALUE3}    ห้องโอนแล้ว
+${ROOMMANAGEMENT_STATUS_EN_VALUE3}    Transferred
+${ROOMMANAGEMENT_STATUSID_VALUE3}    2
+
+
+
+#Account
+${ROOMMANAGEMENT_ACCOUNT_TH_VALUE1}    condosupport
+${ROOMMANAGEMENT_ACCOUNT_EN_VALUE1}    condosupport
+
+
+#property
+${ROOMMANAGEMENT_PROPERTY_TH_VALUE1}    SmartRmsCondo B
+${ROOMMANAGEMENT_PROPERTY_EN_VALUE1}    SmartRmsCondo B
+
+
+#Building
+${ROOMMANAGEMENT_BUILDING_TH_VALUE1}    ศุภากรเพลส
+${ROOMMANAGEMENT_BUILDING_EN_VALUE1}    ศุภากรเพลส
+
+
+# AccountId = 7
+${ROOMMANAGEMENT_ACCOUNTID_VALUE}    7
+
+# room_no = 999
+${ROOMMANAGEMENT_ROOMNO_VALUE}    999
+
+# property_id = 8
+${ROOMMANAGEMENT_PROPERTYID_VALUE}    8
+
+# building_id = 19
+${ROOMMANAGEMENT_BUILDINGID_VALUE}    19
+
+# id_room = 7985
+${ROOMMANAGEMENT_ROOMID_VALUE}    7985
+
+# floor,room_no asc
+${ROOMMANAGEMENT_ORDERBY_VALUE}    floor,room_no asc
+
+
+
+
+################################################################-- capture page screenshot --################################################################
+#-------------------------------------------- Search --------------------------------------------#
+${ROOMMANAGEMENT_SEARCHUSER_M7_0_1_12_000_SUCCESS_SCREENSHOT}    M7_0_1_12_000_RoomManagement_Success_SearchUser_VerifyScreen.png
+${ROOMMANAGEMENT_SEARCHADMIN_M7_0_1_13_000_SUCCESS_SCREENSHOT}    M7_0_1_13_000_RoomManagement_Success_SearchAdmin_Verifyscreen.png
+${ROOMMANAGEMENT_SEARCHUSER_M7_1_1_12_000_SUCCESS_SCREENSHOT}    M7_1_1_12_000_RoomManagement_Success_SearchUser_VerifyAPIOnload.png
+${ROOMMANAGEMENT_SEARCHUSER_M7_1_1_12_001_SUCCESS_SCREENSHOT}    M7_1_1_12_001_RoomManagement_Success_SearchUser_VerifyAction.png
+${ROOMMANAGEMENT_SEARCHADMIN_M7_1_1_13_000_SUCCESS_SCREENSHOT}    M7_1_1_13_000_RoomManagement_Success_SearchAdmin_VerifyAction.png
+
+#-------------------------------------------- View --------------------------------------------#
+${ROOMMANAGEMENT_VIEWROOMUSER_M7_0_1_14_000_SUCCESS_SCREENSHOT}    M7_0_1_14_000_RoomManagement_Success_ViewRoomUser_VerifyScreen.png
+${ROOMMANAGEMENT_VIEWROOMUSER_M7_1_1_14_000_SUCCESS_SCREENSHOT}    M7_1_1_14_000_RoomManagement_Success_ViewRoonUser_VerifyAPIOnloadAndMappingData.png
+${ROOMMANAGEMENT_VIEWROOMUSER_M7_1_1_14_001_SUCCESS_SCREENSHOT}    M7_1_1_14_001_RoomManagement_Success_ViewRoomUser_VerifyAction.png
+${ROOMMANAGEMENT_VIEWROOMUSER_M7_1_1_15_000_SUCCESS_SCREENSHOT}    M7_1_1_15_000_RoomManagement_Success_ViewRoomIncomeUser_VerifyAPIOnloadAndMapping.png
+${ROOMMANAGEMENT_VIEWROOMUSER_M7_1_1_15_001_SUCCESS_SCREENSHOT}    M7_1_1_15_001_RoomManagement_Success_ViewRoomIncomeUser_VerifyAction.png
+${ROOMMANAGEMENT_VIEWROOMUSER_M7_0_1_15_000_SUCCESS_SCREENSHOT}    M7_0_1_15_000_RoomManagement_Success_ViewRoomIncomeUser_VerifyScreen.png
+#-------------------------------------------- Create --------------------------------------------#
+${ROOMMANAGEMENT_CREATEROOMADMIN_M7_1_1_19_000_SUCCESS_SCREENSHOT}    M7_1_1_19_000_RoomManagement_Success_CreateRoomAdmin_VerifyAction.png
+${ROOMMANAGEMENT_CREATEROOMADMIN_M7_0_1_19_000_SUCCESS_SCREENSHOT}    M7_0_1_19_000_RoomManagement_Success_CreateRoomAdmin_VerifyScreen.png
+${ROOMMANAGEMENT_CREATEROOMADMIN_M7_1_1_20_000_SUCCESS_SCREENSHOT}    M7_1_1_20_000_RoomManagement_Success_CreateRoomInComeAdmin_VerifyAPIOnloadAndMappingData.png
+${ROOMMANAGEMENT_CREATEROOMADMIN_M7_0_1_20_000_SUCCESS_SCREENSHOT}    M7_0_1_20_000_RoomManagement_Success_CreateRoomInComeAdmin_VerifyScreen.png
+${ROOMMANAGEMENT_CREATEROOMADMIN_M7_1_1_20_001_SUCCESS_SCREENSHOT}    M7_1_1_20_001_RoomManagement_Success_CreateRoomInComeAdmin_VerifyAction.png
+#-------------------------------------------- Edit --------------------------------------------#
+${ROOMMANAGEMENT_EDITROOMADMIN_M7_0_1_22_000_SUCCESS_SCREENSHOT}    M7_0_1_22_000_RoomManagement_Success_EditRoomIncomeAdmin_VerifyScreen.png
+${ROOMMANAGEMENT_EDITROOMADMIN_M7_1_1_22_000_SUCCESS_SCREENSHOT}    M7_1_1_22_000_RoomManagement_Success_EditRoomIncomeAdmin_VerifyAPIOnloadAndMappingData.png
+${ROOMMANAGEMENT_EDITROOMADMIN_M7_1_1_22_001_SUCCESS_SCREENSHOT}    M7_1_1_22_001_RoomManagement_Success_EditRoomIncomeAdmin_VerifyAction.png
+${ROOMMANAGEMENT_EDITROOMADMIN_M7_0_1_21_000_SUCCESS_SCREENSHOT}    M7_0_1_21_000_RoomManagement_Success_EditRoomAdmin_VerifyScreen.png
+${ROOMMANAGEMENT_EDITROOMADMIN_M7_1_1_21_001_SUCCESS_SCREENSHOT}    M7_1_1_21_001_RoomManagement_Success_EditRoomAdmin_VerifyAction.png
+#-------------------------------------------- Delete --------------------------------------------#
+${ROOMMANAGEMENT_DELETEROOMADMIN_M7_0_1_16_000_SUCCESS_SCREENSHOT}    M7_0_1_16_000_RoomManagement_Success_DeleteRoomAdmin_VerifyScreen.png
+${ROOMMANAGEMENT_DELETEROOMADMIN_M7_0_1_17_000_SUCCESS_SCREENSHOT}    M7_0_1_17_000_RoomManagement_Success_DeleteRoomInComeAdmin_VerifyScreen.png
+${ROOMMANAGEMENT_DELETEROOMINCOME_M7_0_1_17_000_SUCCESS_SCREENSHOT}    M7_0_1_17_000_RoomManagement_DeleteRoomInCome_VerifyScreen.png
+${ROOMMANAGEMENT_DELETEROOMADMIN_M7_1_1_16_000_SUCCESS_SCREENSHOT}    M7_1_1_16_000_RoomManagement_Success_DeleteRoomAdmin_VerifyAction.png
+${ROOMMANAGEMENT_DELETEROOMADMIN_M7_1_1_16_000_SUCCESS_SCREENSHOT}    M7_1_1_16_000_RoomManagement_Success_DeleteRoomAdmin_VerifyAction.png
+${ROOMMANAGEMENT_DELETEROOMADMIN_M7_1_1_17_000_SUCCESS_SCREENSHOT}    M7_1_1_17_000_RoomManagement_Success_DeleteRoomInComeAdmin_VerifyAction.png

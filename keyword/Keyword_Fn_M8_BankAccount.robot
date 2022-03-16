@@ -1,0 +1,578 @@
+*** Keywords ***
+################################################################-- Set Data for check value table Bank Account Management--################################################################
+Set Data for check value table Bank Account Management
+    #Set field header table To Array
+	${numCol}=    Convert To Integer    ${BANKACCOUNTINFORMATION_SEARCH_NUMCOL}
+	#Set field header table To Array
+	@{fieldArrDataTable}=    Create List	
+	Append To List    ${fieldArrDataTable}    @{BANKACCOUNTINFORMATION_SEARCH_LBL_FIELD_HEADER_TABLE_VALUE_TH}
+	# Append To List    ${fieldArrDataTable}    no    banknameTh    bankAccountType    bankAccountName    bankAccountPromptPayNumber    status
+	#Set Num field To Array
+	@{arrNumfield}=    Create List	
+	Append To List    ${arrNumfield}    ${numCol-6}    ${numCol-5}    ${numCol-4}    ${numCol-3}    ${numCol-2}    ${numCol-1}
+	#Set Num Col To Array
+	@{arrNumCol}=    Create List	
+	Append To List    ${arrNumCol}    ${numCol-5}    ${numCol-4}    ${numCol-3}    ${numCol-2}    ${numCol-1}    ${numCol}
+	[Return]    ${numCol}    ${fieldArrDataTable}    ${arrNumfield}    ${arrNumCol}
+	
+Set Data for check value table Bank Account Management EN
+    #Set field header table To Array
+	${numCol}=    Convert To Integer    ${BANKACCOUNTINFORMATION_SEARCH_NUMCOL}
+	#Set field header table To Array
+	@{fieldArrDataTable}=    Create List	
+	Append To List    ${fieldArrDataTable}    @{BANKACCOUNTINFORMATION_SEARCH_LBL_FIELD_HEADER_TABLE_VALUE_EN}
+	# Append To List    ${fieldArrDataTable}    no    banknameEn    bankAccountType    bankAccountName    bankAccountPromptPayNumber    status
+	#Set Num field To Array
+	@{arrNumfield}=    Create List	
+	Append To List    ${arrNumfield}    ${numCol-6}    ${numCol-5}    ${numCol-4}    ${numCol-3}    ${numCol-2}    ${numCol-1}
+	#Set Num Col To Array
+	@{arrNumCol}=    Create List	
+	Append To List    ${arrNumCol}    ${numCol-5}    ${numCol-4}    ${numCol-3}    ${numCol-2}    ${numCol-1}    ${numCol}
+	[Return]    ${numCol}    ${fieldArrDataTable}    ${arrNumfield}    ${arrNumCol}
+	
+Check Value Table Bank Account Management
+	#====== Verify DB ==========
+    #Inquiry for verify DB  
+	#  [((9, 10, 1, None, '1111111111', 'เทสบัญชี', datetime.datetime(2021, 9, 21, 17, 8, 41), '10', None, None, None, None, 7, 1, 1, None),), 1] 
+    ${resultSearch}=    Run keyword And Continue On Failure    Request Verify DB Check Data Search Bank Account    ${MYSQL_TYPE_SEARCHLISTALL}    null    null    null    ${LIMIT_20}    ${OFFSET_0}    ${DB_TB_BANKACCOUNT_FIELD_STATUS} ${ORDERBY_DESC}
+	${dataSearch}=    Set Variable    ${resultSearch}[0]
+	Log To Console    [dataSearch] : ${dataSearch}
+	Set Global Variable    ${rowcountSearchBankAccount}    ${resultSearch}[1]
+	Log To Console    [rowcount SearchBankAccount] : ${rowcountSearchBankAccount}
+
+	${checkNodata}=    Run Keyword If    '${rowcountSearchBankAccount}'=='0'    Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_NODATA_LOCATOR}    ${DEFAULT_LBL_NODATA_TH}    #Nodata
+    ...    ELSE IF    '${rowcountSearchBankAccount}'!='0'    Check Value Table Search Bank Account    ${DEFAULT_TH}     ${rowcountSearchBankAccount}    ${dataSearch}
+    
+	[Return]    ${rowcountSearchBankAccount}
+
+Check Value Table Bank Account Management EN
+	#====== Verify DB ==========
+    #Inquiry for verify DB  
+	#  [((9, 10, 1, None, '1111111111', 'เทสบัญชี', datetime.datetime(2021, 9, 21, 17, 8, 41), '10', None, None, None, None, 7, 1, 1, None),), 1] 
+    ${resultSearch}=    Run keyword And Continue On Failure    Request Verify DB Check Data Search Bank Account    ${MYSQL_TYPE_SEARCHLISTALL}    null    null    null    ${LIMIT_20}    ${OFFSET_0}    ${DB_TB_BANKACCOUNT_FIELD_STATUS} ${ORDERBY_DESC}
+	${dataSearch}=    Set Variable    ${resultSearch}[0]
+	Log To Console    [dataSearch] : ${dataSearch}
+	Set Global Variable    ${rowcountSearchBankAccount}    ${resultSearch}[1]
+	Log To Console    [rowcount SearchBankAccount] : ${rowcountSearchBankAccount}
+
+	${checkNodata}=    Run Keyword If    '${rowcountSearchBankAccount}'=='0'    Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_NODATA_LOCATOR}    ${DEFAULT_LBL_NODATA_EN}    #Nodata
+    ...    ELSE IF    '${rowcountSearchBankAccount}'!='0'    Check Value Table Search Bank Account    ${DEFAULT_EN}     ${rowcountSearchBankAccount}    ${dataSearch}
+    
+	[Return]    ${rowcountSearchBankAccount}
+################################################################-- Create Bank Account Management--################################################################
+#====== Check DB ==========
+Create Bank Account Management input all field data 
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_TH} 
+	
+	#Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE1}
+	Sleep    0.5s
+	#Branch
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_BRANCH_LOCATOR}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_TH_VALUE1}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_TH_VALUE1}
+	Sleep    0.5s
+	#Remark
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXTAREA_REMARK_LOCATOR}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+    
+	Sleep    2s
+    #alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_TH}
+	
+    #================ Check Value Table ================
+    #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	${setData}=    Set Data for check value table Bank Account Management
+
+	${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE1}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}","status":"${BANKACCOUNTINFORMATION_STATUS_TH_VALUE1}"}
+    @{valArrDataTable}=    Create List
+	Append To List    ${valArrDataTable}    ${data} 
+	${numRow}=    Convert To Integer    0
+    Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+    
+	Check Value Table Bank Account Management
+
+	#================ Verify DB ================	
+	Request Verify DB Check Data Create Bank Account    ${MYSQL_TYPE_CREATE_ALLFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE1}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE1}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+Create Bank Account Management input require field data 
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_TH} 
+   
+    #Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_TH_VALUE2}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE2}
+	Sleep    0.5s
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_TH_VALUE2}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_TH_VALUE2}
+	Sleep    0.5s
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+    
+	Sleep    2s
+	#alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_TH}
+
+    #================ Check Value Table ================
+    #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	${setData}=    Set Data for check value table Bank Account Management
+
+	${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE2}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE2}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE2}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}","status":"${BANKACCOUNTINFORMATION_STATUS_TH_VALUE2}"}
+    @{valArrDataTable}=    Create List
+	Append To List    ${valArrDataTable}    ${data} 
+	${numRow}=    Convert To Integer    0
+    Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+		
+	Check Value Table Bank Account Management
+    
+	#================ Verify DB ================	
+	Request Verify DB Check Data Create Bank Account    ${MYSQL_TYPE_CREATE_REQUIREDFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE2}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE2}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE2}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE2}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+
+#====== No Check Table ==========
+Create Bank Account Management input all field data No Check Table 
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_TH} 
+	
+	#Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE1}
+	Sleep    0.5s
+	#Branch
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_BRANCH_LOCATOR}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_TH_VALUE1}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_TH_VALUE1}
+	Sleep    0.5s
+	#Remark
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXTAREA_REMARK_LOCATOR}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+
+    Sleep    2s
+	#alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_TH}
+
+Create Bank Account Management input require field data No Check Table
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_TH} 
+   
+    #Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_TH_VALUE2}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE2}
+	Sleep    0.5s
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_TH_VALUE2}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_TH_VALUE2}
+	Sleep    0.5s
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+
+    Sleep    2s
+    #alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_TH}
+
+################################################################################################################################
+################################################################-- Edit Bank Account Management --################################################################
+Edit Bank Account Management input all field data 
+    #Click Edit Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_EDIT_LOCATOR}
+	Sleep    0.5s
+	
+	#Edit Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_EDIT_LBL_EDITBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_EDIT_LBL_EDITBANKACCOUNTINFORMATION_TH} 
+	
+	#Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE1}
+	Sleep    0.5s
+	#Branch
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_BRANCH_LOCATOR}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_TH_VALUE1}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_TH_VALUE1}
+	Sleep    0.5s
+	#Remark
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXTAREA_REMARK_LOCATOR}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+
+    Sleep    2s
+	#alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_TH}
+
+    #================ Check Value Table ================
+    #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	${setData}=    Set Data for check value table Bank Account Management
+
+	${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_TH_VALUE1}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}","status":"${BANKACCOUNTINFORMATION_STATUS_TH_VALUE1}"}
+    @{valArrDataTable}=    Create List
+	Append To List    ${valArrDataTable}    ${data} 
+	${numRow}=    Convert To Integer    0
+    Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+    
+	Check Value Table Bank Account Management
+
+	#================ Verify DB ================	
+	Request Verify DB Check Data Edit Bank Account    ${MYSQL_TYPE_EDIT_ALLFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE1}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE1}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+################################################################################################################################
+################################################################-- Create Bank Account Management [EN]--################################################################
+#====== Check DB ==========
+Create Bank Account Management input all field data EN
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_EN} 
+	
+	#Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE1}
+	Sleep    0.5s
+	#Branch
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_BRANCH_LOCATOR}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_EN_VALUE1}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_EN_VALUE1}
+	Sleep    0.5s
+	#Remark
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXTAREA_REMARK_LOCATOR}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+    
+	Sleep    2s
+    #alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_EN}
+	
+    #================ Check Value Table ================
+    #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	${setData}=    Set Data for check value table Bank Account Management EN
+
+	${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE1}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}","status":"${BANKACCOUNTINFORMATION_STATUS_EN_VALUE1}"}
+    @{valArrDataTable}=    Create List
+	Append To List    ${valArrDataTable}    ${data} 
+	${numRow}=    Convert To Integer    0
+    Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+    
+	Check Value Table Bank Account Management EN
+
+	#================ Verify DB ================	
+	Request Verify DB Check Data Create Bank Account    ${MYSQL_TYPE_CREATE_ALLFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE1}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE1}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+Create Bank Account Management input require field data EN
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_EN} 
+   
+    #Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_EN_VALUE2}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE2}
+	Sleep    0.5s
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_EN_VALUE2}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_EN_VALUE2}
+	Sleep    0.5s
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+    
+	Sleep    2s
+	#alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_EN}
+
+    #================ Check Value Table ================
+    #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	${setData}=    Set Data for check value table Bank Account Management EN
+
+	${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE2}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE2}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE2}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}","status":"${BANKACCOUNTINFORMATION_STATUS_EN_VALUE2}"}
+    @{valArrDataTable}=    Create List
+	Append To List    ${valArrDataTable}    ${data} 
+	${numRow}=    Convert To Integer    0
+    Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+
+	Check Value Table Bank Account Management EN
+    
+	#================ Verify DB ================	
+	Request Verify DB Check Data Create Bank Account    ${MYSQL_TYPE_CREATE_REQUIREDFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE2}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE2}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE2}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE2}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+
+#====== No Check Table ==========
+Create Bank Account Management input all field data No Check Table EN
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_EN} 
+	
+	#Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE1}
+	Sleep    0.5s
+	#Branch
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_BRANCH_LOCATOR}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_EN_VALUE1}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_EN_VALUE1}
+	Sleep    0.5s
+	#Remark
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXTAREA_REMARK_LOCATOR}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+
+    Sleep    2s
+	#alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_EN}
+
+    # #================ Check Value Table ================
+    # #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	# ${setData}=    Set Data for check value table Bank Account Management
+
+	# ${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE1}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}","status":"${BANKACCOUNTINFORMATION_STATUS_EN_VALUE1}"}
+    # @{valArrDataTable}=    Create List
+	# Append To List    ${valArrDataTable}    ${data} 
+	# ${numRow}=    Convert To Integer    0
+    # Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+    
+	# Check Value Table Bank Account Management
+
+	#================ Verify DB ================	
+	# Request Verify DB Check Data Create Bank Account    ${MYSQL_TYPE_CREATE_ALLFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE1}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE1}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+Create Bank Account Management input require field data No Check Table EN
+    #Click Create Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_CREATE_LOCATOR}
+	Sleep    0.5s
+	
+	#Create Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_ADD_LBL_CREATEBANKACCOUNTINFORMATION_EN} 
+   
+    #Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_EN_VALUE2}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE2}
+	Sleep    0.5s
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_EN_VALUE2}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_EN_VALUE2}
+	Sleep    0.5s
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+
+    Sleep    2s
+    #alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_EN}
+
+    # #================ Check Value Table ================
+    # #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	# ${setData}=    Set Data for check value table Bank Account Management
+
+	# ${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE2}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE2}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE2}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}","status":"${BANKACCOUNTINFORMATION_STATUS_EN_VALUE2}"}
+    # @{valArrDataTable}=    Create List
+	# Append To List    ${valArrDataTable}    ${data} 
+	# ${numRow}=    Convert To Integer    0
+    # Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+		
+	# Check Value Table Bank Account Management
+    
+	#================ Verify DB ================	
+	# Request Verify DB Check Data Create Bank Account    ${MYSQL_TYPE_CREATE_REQUIREDFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE2}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE2}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE2}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE2}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE2}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE2}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+		
+################################################################################################################################
+################################################################-- Edit Bank Account Management [EN]--################################################################
+Edit Bank Account Management input all field data EN
+    #Click Edit Bank account
+	Click Element Page    ${BANKACCOUNTINFORMATION_BTN_EDIT_LOCATOR}
+	Sleep    0.5s
+	
+	#Edit Bank Account Information
+	Wait Until Contains Element Text Should Be    ${BANKACCOUNTINFORMATION_EDIT_LBL_EDITBANKACCOUNTINFORMATION_LOCATOR}    ${BANKACCOUNTINFORMATION_EDIT_LBL_EDITBANKACCOUNTINFORMATION_EN} 
+	
+	#Bank *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANK_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}
+	Sleep    0.5s
+	#Bank Account Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_BANKACCOUNTTYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE1}
+	Sleep    0.5s
+	#Branch
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_BRANCH_LOCATOR}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}
+	#Account name *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTNAME_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}
+	#Account/PromptPay Number *
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXT_ACCOUNTPROMPTPAYNUMBER_LOCATOR}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}
+	#Status *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_STATUS_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_STATUS_EN_VALUE1}
+	Sleep    0.5s
+	#Operate Type *
+	Select Dropdown    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_LIST_LOCATOR}    ${BANKACCOUNTINFORMATION_ADDEDIT_DDL_OPERATETYPE_CLASS_LOCATOR}    ${BANKACCOUNTINFORMATION_OPERATETYPE_EN_VALUE1}
+	Sleep    0.5s
+	#Remark
+	Wait Until Contains Input Text    ${BANKACCOUNTINFORMATION_ADDEDIT_TXTAREA_REMARK_LOCATOR}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+	
+    #Click Save button
+    Click Element Page    ${BANKACCOUNTINFORMATION_ADDEDIT_BTN_SAVE_LOCATOR}
+
+    Sleep    2s
+	#alert bottom
+	Wait Until Contains Element Text Should Be    ${ALERT_BOTTOM_LBL_LOCATOR}    ${VALUE_RESULTDESCRIPTION_SUCCESS_EN}
+
+    #================ Check Value Table ================
+    #${numCol},${fieldArrDataTable},${arrNumfield},${arrNumCol}
+	${setData}=    Set Data for check value table Bank Account Management EN
+
+	${data}=    Evaluate    {"no":"1", "banknameTh":"${BANKACCOUNTINFORMATION_BANK_TH_VALUE1}", "banknameEn":"${BANKACCOUNTINFORMATION_BANK_EN_VALUE1}", "bankAccountType":"${BANKACCOUNTINFORMATION_BANKACCOUNTTYPE_EN_VALUE1}", "bankAccountName":"${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}","bankAccountPromptPayNumber":"${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}","status":"${BANKACCOUNTINFORMATION_STATUS_EN_VALUE1}"}
+    @{valArrDataTable}=    Create List
+	Append To List    ${valArrDataTable}    ${data} 
+	${numRow}=    Convert To Integer    0
+    Check Value Table    ${BANKACCOUNTINFORMATION_SEARCH_LBL_RESULT_DATA_LOCATOR}    ${setData}[0]    ${numRow}    ${setData}[3]    ${setData}[2]    ${setData}[1]    ${valArrDataTable}
+    
+	Check Value Table Bank Account Management EN
+
+	#================ Verify DB ================	
+	Request Verify DB Check Data Edit Bank Account    ${MYSQL_TYPE_EDIT_ALLFIELD}    ${BANKACCOUNTINFORMATION_BANKID_VALUE1}    ${BANKACCOUNTINFORMATION_BRANCH_VALUE1}    ${BANKACCOUNTINFORMATION_BANKACCOUNTTYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTNAME_VALUE1}    ${BANKACCOUNTINFORMATION_ACCOUNTPROMPTPAYNUMBER_VALUE1}    ${BANKACCOUNTINFORMATION_OPERATETYPEID_VALUE1}    ${BANKACCOUNTINFORMATION_STATUSID_VALUE1}    ${BANKACCOUNTINFORMATION_REMARK_VALUE1}
+
+
+################################################################-- Generic Test Case Teardown BankAccountManagement--################################################################
+Generic Test Case Teardown BankAccountManagement	
+    [Arguments]    ${value_delete}
+	
+	#Click delete button
+    Click Delete Data TH    ${BANKACCOUNTINFORMATION_BTN_DELETE_LOCATOR}    ${value_delete}
+
+	################### Close Browser ###################
+	Close Browser 	
+
+Generic Test Case Teardown BankAccountManagement2	
+    [Arguments]    ${value_delete1}    ${value_delete2}
+	
+	#Click delete button
+    Click Delete Data EN    ${BANKACCOUNTINFORMATION_BTN_DELETE_LOCATOR}    ${value_delete1}
+	#Click delete button
+    Click Delete Data EN    ${BANKACCOUNTINFORMATION_BTN_DELETE_LOCATOR}    ${value_delete2}
+
+	################### Close Browser ###################
+	Close Browser 	
+
+Generic Test Case Teardown BankAccountManagement EN
+    [Arguments]    ${value_delete}
+	
+	#Click delete button
+    Click Delete Data EN    ${BANKACCOUNTINFORMATION_BTN_DELETE_LOCATOR}    ${value_delete}
+
+	################### Close Browser ###################
+	Close Browser 	
+
+Generic Test Case Teardown BankAccountManagement2 EN	
+    [Arguments]    ${value_delete1}    ${value_delete2}
+	
+	#Click delete button
+    Click Delete Data EN    ${BANKACCOUNTINFORMATION_BTN_DELETE_LOCATOR}    ${value_delete1}
+	#Click delete button
+    Click Delete Data EN    ${BANKACCOUNTINFORMATION_BTN_DELETE_LOCATOR}    ${value_delete2}
+
+	################### Close Browser ###################
+	Close Browser 	
+################################################################################################################################
+	

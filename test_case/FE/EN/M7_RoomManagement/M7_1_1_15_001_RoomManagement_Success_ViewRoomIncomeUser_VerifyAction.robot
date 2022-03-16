@@ -1,0 +1,89 @@
+*** Settings ***
+Resource    ../../../../variables/Variables.robot    
+Resource    ../../../../keyword/Keyword.robot
+	
+*** Test Cases ***
+################### [Search] Room Management ###################
+M7_1_1_15_001_RoomManagement_Success_ViewRoomIncomeUser_VerifyAction [Verify Action "View Room User"]
+    [Documentation]    Step is :    
+	...    1. open link : https://login.smartcondo.net/en  
+	...    2. login
+	...    3. click setting
+	...    4. click User Account
+
+    [Setup]    Open Browser To Login Page Super Admin EN
+   	
+    #========== Click Building ======
+	Click building 
+	
+
+Verify Action : click Room details button
+	#Click Room
+	Click Element Page  ${ROOMMANAGEMENT_SEARCH_BTN_ROOMA103_LOCATOR}
+
+	#Click Room Detail
+	Click Element Page  ${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAILS_LOCATOR}
+
+    #Room no header
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_VIEW_LBL_HEADERPOPUPVIEW_ROOMNOHEADER_LOCATOR}    ${ROOMMANAGEMENT_VIEW_LBL_HEADERPOPUPVIEW_ROOMA103_EN}
+
+    #Room detail
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAIL_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAIL_EN}
+
+    #Room detail
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAIL_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_ROOMDETAIL_EN}
+
+    #Income details
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_INCOMEDETAILS_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_INCOMEDETAILS_EN}
+
+    #Room no
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_ROOM_NO_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_ROOM_NO_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_ROOM_NO_LOCATOR}    
+
+    #House no
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_HOUSE_NO_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_HOUSE_NO_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_HOUSE_NO_LOCATOR}
+
+    #S Area (square meter)
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_SAREA_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_SAREA_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_SAREA_LOCATOR}
+
+
+    #Proprietary ratio
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_PROPRIETARYRATIO_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_PROPRIETARYRATIO_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_PROPRIETARYRATIO_LOCATOR}
+
+
+    #Water meter no
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERNO_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERNO_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_WATERMETERNO_LOCATOR}
+
+
+    #Electric meter no
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERNO_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERNO_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_ELECTRICMETERNO_LOCATOR}
+
+
+    #Water meter limit unit
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERLIMITUNIT_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_WATERMETERLIMITUNIT_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_WATERMETERLIMITUNIT_LOCATOR}
+
+
+    #Electric meter limit unit
+    Wait Until Contains Element Text Should Be    ${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERLIMITUNIT_LOCATOR}    ${ROOMMANAGEMENT_SEARCH_LBL_ELECTRICMETERLIMITUNIT_EN}
+    Selenium2Library.Element Should Be Disabled    ${ROOMMANAGEMENT_SEARCH_TXT_ELECTRICMETERLIMITUNIT_LOCATOR}
+
+
+Verify action : click Income details button
+    Click Element Page  ${ROOMMANAGEMENT_SEARCH_LBL_INCOMEDETAILS_LOCATOR}
+
+
+Verify action : click X button
+    Click Element Page  ${ROOMMANAGEMENT_BTN_CLOSE_LOCATOR}
+
+
+    #capture page screenshot
+    Selenium2Library.Capture Page Screenshot    ${ROOMMANAGEMENT_VIEWROOMUSER_M7_1_1_15_001_SUCCESS_SCREENSHOT}
+
+	################### Close Browser ###################
+    Close Browser
